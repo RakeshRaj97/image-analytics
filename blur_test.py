@@ -2,8 +2,10 @@ import cv2
 import face_recognition
 import numpy as np
 from shapely.geometry import Polygon
+import mouth_open
+from PIL import Image
 
-img = cv2.imread("test4.jpeg")
+img = cv2.imread("download.png")
 a, b, c = img.shape
 
 face_locations = face_recognition.face_locations(img)
@@ -12,6 +14,11 @@ for i in face_locations:
   for j in i:
     list.append(i)
 
+# Find all facial features in all the faces in the image
+face_landmarks_list = face_recognition.face_landmarks(img)
+top_lip = face_landmarks_list[0]['top_lip']
+bottom_lip = face_landmarks_list[0]['bottom_lip']
+teeth = mouth_open.check_mouth_open(top_lip, bottom_lip)
 
 def calculate_iou(box_1, box_2):
     poly_1 = Polygon(box_1)
@@ -36,7 +43,8 @@ mask = cv2.rectangle(mask, top_left , bottom_right, ([255, 255, 255]), -1)
 out = np.where(mask==np.array([255, 255, 255]), img, blurred_img)
 
 font = cv2.FONT_HERSHEY_SIMPLEX
-cv2.putText(out, str(iou)+'%', (50,50), font, 1, (0, 255, 0), 1, cv2.LINE_AA)
+cv2.putText(out, str(iou)+'%', (5,50), font, 1, (0, 255, 0), 1, cv2.LINE_AA)
+cv2.putText(out, "Is teeth visible: "+ str(teeth), (5,70), font, 1, (0, 255, 0), 1, cv2.LINE_AA)
 
 cv2.namedWindow('image', cv2.WINDOW_NORMAL)
 cv2.imshow("image", out)
