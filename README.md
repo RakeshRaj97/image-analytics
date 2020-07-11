@@ -1,8 +1,8 @@
 # image-analytics
 
-This repository contains methods to perform image analytics on linkedIn profile pictures
+This repository contains methods to perform image analytics on LinkedIn profile pictures
 
-Following are the operations performed by taking a LinkedIN profile URL as an input,
+Following are the operations performed by taking a LinkedIn profile URL as an input,
 
 1. Scrape the LinkedIn profile image URL from the input LinkedIN profile URL
 
