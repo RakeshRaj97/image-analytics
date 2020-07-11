@@ -10,7 +10,7 @@ from extract_url import image_url
 from cognitive_api import cognitive_api
 
 # extract image url from the linkedin profile url
-profile_url = "https://www.linkedin.com/in/scottmorrisonmp/"
+profile_url = "https://www.linkedin.com/in/rakesh-raj-ba9385191/"
 image_url = image_url(profile_url)
 
 # download the image from image_url
@@ -82,13 +82,13 @@ mask = cv2.rectangle(mask, top_left, bottom_right, ([255, 255, 255]), -1)
 out = np.where(mask == np.array([255, 255, 255]), img, blurred_img)
 
 font = cv2.FONT_HERSHEY_SIMPLEX
-cv2.putText(out, "Face quality: " + str(face_quality_), (5, 50), font, 1, (0, 255, 0), 1, cv2.LINE_AA)
-cv2.putText(out, "Is teeth visible: " + str(teeth), (5, 70), font, 1, (0, 255, 0), 1, cv2.LINE_AA)
-cv2.putText(out, emotion + ":" + str(round(score * 100)) + "%", (5, 110), font, 1, (0, 255, 0), 1, cv2.LINE_AA)
-cv2.putText(out, vis_feature, (5, 130), font, 0.5, (0, 255, 0), 1, cv2.LINE_AA)
+cv2.putText(out, "Face quality: " + str(face_quality_), (5, 50), font, 0.5, (0, 255, 0), 1, cv2.LINE_AA)
+cv2.putText(out, "Is teeth visible: " + str(teeth), (5, 70), font, 0.5, (0, 255, 0), 1, cv2.LINE_AA)
+cv2.putText(out, emotion + ":" + str(round(score * 100)) + "%", (5, 110), font, 0.5, (0, 255, 0), 1, cv2.LINE_AA)
+cv2.putText(out, vis_feature, (5, 130), font, 0.4, (0, 255, 0), 1, cv2.LINE_AA)
 
 cv2.namedWindow('image', cv2.WINDOW_NORMAL)
 cv2.imshow("image", out)
-
+cv2.imwrite("output.png", out)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
