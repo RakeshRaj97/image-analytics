@@ -18,7 +18,9 @@ Following are the operations performed by taking a LinkedIn profile URL as an in
 
 # Test the program
 Update the Microsoft API key with your own credentials. Run the python file "image_analytics.py" after editing the line 13 with the desired LinkedIn URL.
-Sample output:
+
+
+# Sample output:
 
 ![image](https://user-images.githubusercontent.com/47710229/87223338-6e9a5780-c3bf-11ea-947b-f5a8ee00e6ea.png)
 
